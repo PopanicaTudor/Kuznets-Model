@@ -1,0 +1,91 @@
+.container {
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+select,
+.submitbutton:focus {
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+}
+
+select:focus,
+.submitbutton:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.submitbutton {
+    color: #000000;
+    cursor: pointer;
+    width: 30%;
+    align-self: center;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    background-color: #5dabff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+.submitbutton:hover {
+  background-color: #0056b3;
+}
+
+.graph-container {
+  width: 85%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 30px auto;
+  box-sizing: border-box;
+}
+
+.graph-container canvas {
+  max-width: 100%;
+  height: auto;
+}

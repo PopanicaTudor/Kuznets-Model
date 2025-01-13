@@ -1,0 +1,19 @@
+.kuznets-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .kuznets-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .kuznets-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  
