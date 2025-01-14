@@ -31,7 +31,7 @@ const Navbar = () => {
         <Flex align="center">
           <Flex gap={3}>
             <Button as={Link} to="/" variant="solid" color={textColor}>
-              Menu
+              Home
             </Button>
             <Button
               as={Link}
