@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "chart.js/auto";
 import "../../styles/KuznetsForm.css";
-import { lusolve } from "mathjs"; // Import named pentru lusolve
-import Grafic from './grafic';
+import Grafic from './Grafic';
 
 const KuznetsForm = () => {
   const [countries] = useState({

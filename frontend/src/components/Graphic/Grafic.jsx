@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import createModel from './createModel';
+import createModel from './CreateModel';
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, Title, Tooltip, Legend);
 
@@ -82,7 +82,7 @@ const Grafic = ({ gdpVector, envVector }) => {
   };
 
   return (
-    <div style={{ width: '1700px', height: '800px', margin: '0 auto', border: '1px solid #ddd', backgroundColor: '#f9f9f9', borderRadius: '15px' }}> 
+    <div style={{ width: '80%', height: '40%', margin: '0 auto', border: '1px solid #ddd', backgroundColor: '#f9f9f9', borderRadius: '15px' }}> 
       <Line data={chartData} options={chartOptions} />
     </div>
   );
