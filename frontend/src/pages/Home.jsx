@@ -5,12 +5,12 @@ import AboutKuznets from "../components/Home/AboutKuznets";
 
 const Home = () => {
   return (
-    <div>
+    <div className="text-black dark:text-white">
       <HeroText />
-      <div>
+      <div className="text-black dark:text-white">
         <KuznetsCurve />
       </div>
-      <div>
+      <div className="text-black dark:text-white">
         <AboutKuznets />
       </div>
     </div>

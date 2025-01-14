@@ -9,6 +9,7 @@
     font-size: 2.5em;
     font-weight: bold;
     margin-bottom: 20px;
+    color: currentColor;
   }
   
   .kuznets-description {

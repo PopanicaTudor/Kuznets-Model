@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "chart.js/auto";
 import "../../styles/KuznetsForm.css";
-import Grafic from './Grafic';
+import Grafic from "./Grafic";
 
 const KuznetsForm = () => {
   const [countries] = useState({
@@ -100,7 +100,6 @@ const KuznetsForm = () => {
           marginBottom: "40px",
           fontSize: "2.5em",
           fontWeight: "bold",
-          color: "#333",
         }}
       >
         Generate the Kuznets Curve
@@ -146,8 +145,8 @@ const KuznetsForm = () => {
           </button>
         </form>
       </div>
-
-      <Grafic gdpVector={gdpVector} envVector={envVector}/>
+      <br />
+      <Grafic gdpVector={gdpVector} envVector={envVector} />
     </div>
   );
 };

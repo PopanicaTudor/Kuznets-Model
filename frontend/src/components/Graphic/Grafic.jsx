@@ -82,7 +82,7 @@ const Grafic = ({ gdpVector, envVector }) => {
   };
 
   return (
-    <div style={{ width: '80%', height: '40%', margin: '0 auto', border: '1px solid #ddd', backgroundColor: '#f9f9f9', borderRadius: '15px' }}> 
+    <div style={{ width: '80%', height: '40%', margin: '0 auto', border: '1px solid #ddd', backgroundColor: 'currentcolor', borderRadius: '15px' }}> 
       <Line data={chartData} options={chartOptions} />
     </div>
   );

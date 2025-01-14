@@ -86,7 +86,7 @@ const AboutKuznets = () => {
             fontSize: "2em",
             fontWeight: "bold",
             textTransform: "uppercase",
-            color: "#333",
+            color: "currentcolor",
           }}
         >
           The Kuznets Curve and Environmental Impacts
