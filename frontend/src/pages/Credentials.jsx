@@ -49,7 +49,7 @@ const Credentials = () => {
           <strong style={{ color: "currentColor" }}>
             {" "}
             {/* Adăugat aici */}
-            1. "Gender, Digitalization, Green: Ensuring a Sustainable Future for
+            "Gender, Digitalization, Green: Ensuring a Sustainable Future for
             all in Europe"
           </strong>{" "}
           <br />
@@ -59,20 +59,7 @@ const Credentials = () => {
           București, Romania, Universitat Autonoma de Barcelona, Espana,
           Universidade do Porto, República Portuguesa, Uzhgorodskyi Nacionalnyi
           Universitet, Ukraina.
-          <br /> <br />
-          <strong style={{ color: "currentColor" }}>
-            {" "}
-            {/* Adăugat aici */}
-            2. "Fostering the Transversal Digital Competences in Higher
-            Education"
-          </strong>{" "}
           <br />
-          Ref. Project: 2022-1-ES01-KA220-HED-000089861, Partnership:
-          Universidad de Malaga, Espana, Universitatea Nationala de Stiinta si
-          Tehnologie POLITEHNICA București, Romania, Univerza na Primorskem
-          Universita del Litorale, Primorskem. Slovenia, Šiauliai State
-          University of Applied Sciences, Šiauliai, Lituania, UC Leuven-Limburg,
-          Belgique
         </p>
       </div>
 

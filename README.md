@@ -7,3 +7,7 @@ Key Features:
  - Interactive Visualization: Provides an intuitive web interface built with HTML, CSS, and JavaScript, allowing users to view EKC trends and projections for specific countries.
 
 This project serves as an educational tool to understand the EKC concept and explore environmental trends across various economic stages.
+
+This project is developed as part of the initiative:
+"Gender, Digitalization, Green: Ensuring a Sustainable Future for all in Europe"
+Ref. Project: 2023-1-RO01- KA220-HED-000154433, Partnership: Universitatea de Stiinte Agricole si Medicina Veterinara, Bucuresti, Romania, Universitatea Nationala de Stiinta si Tehnologie POLITEHNICA București, Romania, Universitat Autonoma de Barcelona, Espana, Universidade do Porto, República Portuguesa, Uzhgorodskyi Nacionalnyi Universitet, Ukraina.
