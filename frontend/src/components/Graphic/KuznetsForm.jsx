@@ -107,7 +107,7 @@ const KuznetsForm = () => {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Select a country:</label>
+            <label style={{ color: '#48c023'}}>Select a country:</label>
             <select
               value={selectedCountry}
               onChange={(e) => setSelectedCountry(e.target.value)}
@@ -124,7 +124,7 @@ const KuznetsForm = () => {
           </div>
 
           <div>
-            <label>Select the environmental indicator:</label>
+            <label style={{ color: '#48c023'}}>Select the environmental indicator:</label>
             <select
               value={selectedIndicator}
               onChange={(e) => setSelectedIndicator(e.target.value)}
