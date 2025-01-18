@@ -1,9 +1,18 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import requests
 from flask_cors import CORS
+import os
+import webbrowser
+import sys
 
-app = Flask(__name__)
-CORS(app)  # Permite accesul din partea frontend-ului
+# Adjust the static folder dynamically based on the runtime environment
+if hasattr(sys, '_MEIPASS'):
+    static_folder = os.path.join(sys._MEIPASS, "frontend/dist")
+else:
+    static_folder = "dist"
+
+app = Flask(__name__, static_folder=static_folder)
+CORS(app)  # Allow CORS for frontend access
 
 # Function to get country data from the World Bank API
 def get_country_data(country, indicators):
@@ -37,17 +46,44 @@ def get_country_data(country, indicators):
 
     return gdp_vector, env_indicator_vector
 
+# API route to fetch data
 @app.route('/api/get_data', methods=['POST'])
 def get_data():
-    data = request.get_json()
-    print(f"Received data from frontend: {data}")
-    country = data['country']
-    indicators = data['indicators']
+    try:
+        data = request.get_json()
+        print(f"Received data from frontend: {data}")
+        country = data['country']
+        indicators = data['indicators']
 
-    # Call the function to get country data
-    gdp_vector, env_indicator_vector = get_country_data(country, indicators)
+        # Call the function to get country data
+        gdp_vector, env_indicator_vector = get_country_data(country, indicators)
 
-    return jsonify({'gdp_vector': gdp_vector, 'env_indicator_vector': env_indicator_vector})
+        return jsonify({'gdp_vector': gdp_vector, 'env_indicator_vector': env_indicator_vector})
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return jsonify({'error': str(e)}), 500
 
+# Route to serve frontend
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve_frontend(path):
+    if path:
+        full_path = os.path.join(app.static_folder, path)
+        if os.path.exists(full_path):
+            return send_from_directory(app.static_folder, path)
+    return send_from_directory(app.static_folder, "index.html")
+
+# Main entry point
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Verify the static folder exists before starting the app
+    if not os.path.exists(static_folder):
+        print(f"Static folder not found: {static_folder}")
+        print("Please make sure the 'dist' folder is present when running locally.")
+        sys.exit(1)
+
+    # Start the Flask app
+    port = 5000
+    url = f"http://127.0.0.1:{port}"
+    print(f"Opening browser at {url}...")
+    webbrowser.open(url)  # Open the browser automatically
+    app.run(host="0.0.0.0", port=port)
