@@ -55,7 +55,7 @@ async function waitForProcessToStart(process, timeout = 10000) {
 (async () => {
     try {
         // Ensure "open" module is installed
-        console.log('Checking dependencies...');
+        console.log('Checking dependencies. This may take a few minutes...');
         await runCommand('npm', ['install', 'open'], __dirname, true);
 
         // Dynamically import 'open' to handle ESM
