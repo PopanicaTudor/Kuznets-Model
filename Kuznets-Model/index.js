@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// Helper pentru rularea comenzilor
+// Helper function to run commands
 async function runCommand(command, args, cwd) {
     return new Promise((resolve, reject) => {
         const process = spawn(command, args, { cwd, shell: true, stdio: 'inherit' });
@@ -10,60 +10,60 @@ async function runCommand(command, args, cwd) {
             if (code === 0) {
                 resolve();
             } else {
-                reject(new Error(`Command "${command} ${args.join(' ')}" failed with code ${code}`));
+                reject(new Error(`Command \"${command} ${args.join(' ')}\" failed with code ${code}`));
             }
         });
     });
 }
 
-// Script principal
+// Main script
 (async () => {
     try {
-        // Directorii proiectului relativ la locația lui index.js
-        const projectDir = `"${__dirname}"`; // Directorul principal Kuznets-Model
-        const projectBackendDir = `"${path.join(__dirname, 'backend')}"`; // Directorul backend
-        const projectFrontendDir = `"${path.join(__dirname, 'frontend')}"`; // Directorul frontend
+        // Project directories relative to the location of index.js
+        const projectDir = `"${__dirname}"`; // Main project directory
+        const projectBackendDir = `"${path.join(__dirname, 'backend')}"`; // Backend directory
+        const projectFrontendDir = `"${path.join(__dirname, 'frontend')}"`; // Frontend directory
 
-        console.log('Verific dependențele...');
+        console.log('Checking dependencies...');
 
-        // 1. Instalează dependențele Node.js
+        // 1. Install Node.js dependencies
         const frontendPackageJson = `"${path.join(__dirname, 'frontend', 'package.json')}"`;
         if (fs.existsSync(frontendPackageJson.replace(/"/g, ''))) {
-            console.log('Instalez dependențele Node.js...');
+            console.log('Installing Node.js dependencies...');
             await runCommand('npm', ['install'], projectFrontendDir.replace(/"/g, ''));
         } else {
-            console.error(`Nu am găsit package.json la ${frontendPackageJson}`);
+            console.error(`package.json not found at ${frontendPackageJson}`);
         }
 
-        // 2. Instalează dependențele Python
+        // 2. Install Python dependencies
         const requirementsFile = `"${path.join(__dirname, 'backend', 'requirements.txt')}"`;
         if (fs.existsSync(requirementsFile.replace(/"/g, ''))) {
             console.log(`Found requirements.txt at: ${requirementsFile}`);
             await runCommand('pip', ['install', '-r', requirementsFile], projectBackendDir.replace(/"/g, ''));
         } else {
-            console.error(`ERROR: Nu am găsit requirements.txt la ${requirementsFile}`);
+            console.error(`ERROR: requirements.txt not found at ${requirementsFile}`);
             process.exit(1);
         }
 
-        // 3. Pornește backend-ul Python
-        console.log('Pornesc backend-ul Python...');
+        // 3. Start Python backend
+        console.log('Starting Python backend...');
         const backendProcess = spawn('python', ['scraping.py'], {
             cwd: projectBackendDir.replace(/"/g, ''),
             shell: true,
             stdio: 'inherit',
         });
 
-        // 4. Pornește frontend-ul React
-        console.log('Pornesc frontend-ul React...');
+        // 4. Start React frontend
+        console.log('Starting React frontend...');
         const frontendProcess = spawn('npm', ['run', 'dev'], {
             cwd: projectFrontendDir.replace(/"/g, ''),
             shell: true,
             stdio: 'inherit',
         });
 
-        // Gestiunea proceselor la terminarea scriptului
+        // Handle processes on script termination
         const cleanup = () => {
-            console.log('Oprire procese...');
+            console.log('Stopping processes...');
             backendProcess.kill();
             frontendProcess.kill();
             process.exit();
@@ -72,17 +72,17 @@ async function runCommand(command, args, cwd) {
         process.on('SIGINT', cleanup);
         process.on('SIGTERM', cleanup);
 
-        // Așteaptă închiderea proceselor
+        // Wait for processes to close
         backendProcess.on('close', (code) => {
-            console.log(`Backend Python s-a oprit cu codul ${code}`);
+            console.log(`Python backend stopped with code ${code}`);
             cleanup();
         });
 
         frontendProcess.on('close', (code) => {
-            console.log(`Frontend React s-a oprit cu codul ${code}`);
+            console.log(`React frontend stopped with code ${code}`);
             cleanup();
         });
     } catch (error) {
-        console.error('A apărut o eroare:', error.message);
+        console.error('An error occurred:', error.message);
     }
 })();
