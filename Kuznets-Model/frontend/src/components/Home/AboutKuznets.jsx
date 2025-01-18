@@ -120,6 +120,44 @@ const AboutKuznets = () => {
           }}
         />
       </div>
+      <div style={{ textAlign: "center", marginTop: "40px" }}>
+        <h2
+          style={{
+            marginBottom: "10px",
+            fontSize: "2em",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+            color: "currentcolor",
+          }}
+        >
+          Data Used For Analysis
+        </h2>
+
+        <p
+          style={{
+            marginBottom: "20px",
+            fontSize: "1.2em",
+            lineHeight: "1.6",
+            fontWeight: "normal",
+          }}
+        >
+          The Environmental Kuznets Curve (EKC) visualization is based on
+          real-world data sourced from{" "}
+          <a
+            href="https://databank.worldbank.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "underline", color: "blue" }} // Stil pentru link
+          >
+            WorldDataBank
+          </a>
+          . This dataset includes up-to-date and relevant information on
+          indicators such as GDP, CO2 emissions, air pollution, and other forms
+          of environmental degradation, providing a practical and data-driven
+          representation of the relationship between economic development and
+          environmental impact.
+        </p>
+      </div>
     </div>
   );
 };

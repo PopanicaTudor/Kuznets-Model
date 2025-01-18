@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "chart.js/auto";
 import "../../styles/KuznetsForm.css";
 import Grafic from "./Grafic";
+import { Box } from '@chakra-ui/react';
 
 const KuznetsForm = () => {
   const [countries] = useState({
@@ -104,10 +105,31 @@ const KuznetsForm = () => {
       >
         Generate the Kuznets Curve
       </h1>
+      <div style={{ textAlign: "center", marginTop: "40px" }}></div>
+      <p
+        style={{
+          marginBottom: "20px",
+          fontSize: "1.2em",
+          lineHeight: "1.6",
+          fontWeight: "normal",
+        }}
+      >
+        Real data used from{" "}
+        <a
+          href="https://databank.worldbank.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "underline", color: "blue" }} // Stil pentru link
+        >
+          WorldDataBank
+        </a>
+        .
+      </p>
+
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div>
-            <label style={{ color: '#48c023'}}>Select a country:</label>
+            <label style={{ color: "#48c023" }}>Select a country:</label>
             <select
               value={selectedCountry}
               onChange={(e) => setSelectedCountry(e.target.value)}
@@ -124,7 +146,9 @@ const KuznetsForm = () => {
           </div>
 
           <div>
-            <label style={{ color: '#48c023'}}>Select the environmental indicator:</label>
+            <label style={{ color: "#48c023" }}>
+              Select the environmental indicator:
+            </label>
             <select
               value={selectedIndicator}
               onChange={(e) => setSelectedIndicator(e.target.value)}
@@ -146,7 +170,9 @@ const KuznetsForm = () => {
         </form>
       </div>
       <br />
-      <Grafic gdpVector={gdpVector} envVector={envVector} />
+      <Box>
+        <Grafic gdpVector={gdpVector} envVector={envVector} />
+      </Box>
     </div>
   );
 };

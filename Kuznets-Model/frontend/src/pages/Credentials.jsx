@@ -3,12 +3,12 @@ import "../styles/Credentials.css";
 
 const Credentials = () => {
   const emails = [
+    { name: "[LEADER] Popanica-Răboj Tudor", email: "tudor.popanica@stud.acs.upb.ro" },
     { name: "Ion Andrei-Sorin", email: "andrei_sorin.ion@stud.acs.upb.ro" },
     {
       name: "Luntraru Maria-Alexandra",
       email: "maria.luntraru@stud.acs.upb.ro",
     },
-    { name: "Popanica-Răboj Tudor", email: "tudor.popanica@stud.acs.upb.ro" },
     { name: "Sultzer Roxana-Maria", email: "roxana.sultzer@stud.acs.upb.ro" },
     { name: "Tudor Mihaela", email: "mihaela.tudor2211@stud.acs.upb.ro" },
   ];
@@ -91,7 +91,13 @@ const Credentials = () => {
       </ul>
 
       <p
-        style={{ lineHeight: "1.6", fontSize: "1.2em", color: "currentColor", marginTop: "20px", marginBottom: "10px" }}  
+        style={{
+          lineHeight: "1.6",
+          fontSize: "1.2em",
+          color: "currentColor",
+          marginTop: "20px",
+          marginBottom: "10px",
+        }}
       >
         Project Coordinators:
       </p>
