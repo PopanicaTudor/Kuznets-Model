@@ -171,7 +171,7 @@ const KuznetsForm = () => {
       </div>
       <br />
       <Box>
-        <Grafic gdpVector={gdpVector} envVector={envVector} />
+        <Grafic gdpVector={gdpVector} envVector={envVector} indicator={selectedIndicator} />
       </Box>
     </div>
   );

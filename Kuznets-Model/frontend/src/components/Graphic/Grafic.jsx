@@ -6,7 +6,19 @@ import { color } from 'framer-motion';
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, Title, Tooltip, Legend);
 
-const Grafic = ({ gdpVector, envVector }) => {
+const Grafic = ({ gdpVector, envVector, indicator }) => {
+  const indicatorUnits = {
+    "EN.GHG.CO2.PC.CE.AR5": "CO2 (metric tons per capita)",
+    "EN.ATM.PM25.MC.M3": "Air Pollution (micrograms per cubic meter)",
+    "EN.GHG.ALL.PC.CE.AR5": "Gas Emissions (metric tons per capita)",
+    "ER.H2O.FWTL.K3": "Biodiversity Loss (km³ of freshwater per year)",
+  };
+
+  // Funcție pentru obținerea unității de măsură
+  const getYAxisLabel = (indicator) => {
+    return indicatorUnits[indicator] ? `${indicatorUnits[indicator]}` : "Environmental Indicator";
+  };
+
   const [regressionData, setRegressionData] = useState([]);
   const [truncatedGDP, setTruncatedGDP] = useState([]);
   const [truncatedEnv, setTruncatedEnv] = useState([]);
@@ -46,7 +58,7 @@ const Grafic = ({ gdpVector, envVector }) => {
     labels: truncatedGDP, // Folosim vectorii trunchiați
     datasets: [
       {
-        label: 'Polynomial Regression',
+        label: 'Environmental Indicator',
         data: regressionData,
         borderColor: 'rgb(31, 139, 27)',
         backgroundColor: 'rgb(31, 139, 27)',
@@ -64,9 +76,9 @@ const Grafic = ({ gdpVector, envVector }) => {
         display: true,
         text: 'Kuznets Curve',
         font: {
-          size: 20, // Setează dimensiunea fontului
+          size: 20,
         },
-        color: 'rgb(31, 139, 27)', // Setează culoarea textului
+        color: 'rgb(31, 139, 27)',
       },
       tooltip: {
         mode: 'index',
@@ -79,33 +91,48 @@ const Grafic = ({ gdpVector, envVector }) => {
     scales: {
       x: {
         type: 'linear',
+        title: {
+          display: true,
+          text: 'GDP (USD per capita)', // PIB-ul are unitatea fixă
+          font: {
+            size: 18,
+          },
+          color: 'rgb(31, 139, 27)',
+        },
         ticks: {
           font: {
-            size: 18, // Setează dimensiunea fontului
+            size: 18,
           },
-          color: 'rgb(31, 139, 27)', // Setează culoarea tick-urilor
+          color: 'rgb(31, 139, 27)',
         },
         grid: {
-          color: 'rgb(31, 139, 27)', // Setează culoarea liniilor de grid pentru axa X
-          lineWidth: 1, // Grosimea liniilor
+          color: 'rgb(31, 139, 27)',
+          lineWidth: 1,
         },
       },
       y: {
         beginAtZero: true,
+        title: {
+          display: true,
+          text: `${getYAxisLabel(indicator)}`, // Setează unitatea în funcție de indicator
+          font: {
+            size: 18,
+          },
+          color: 'rgb(31, 139, 27)',
+        },
         ticks: {
           font: {
-            size: 18, // Setează dimensiunea fontului
+            size: 18,
           },
-          color: 'rgb(31, 139, 27)', // Setează culoarea tick-urilor
+          color: 'rgb(31, 139, 27)',
         },
         grid: {
-          color: 'rgb(31, 139, 27)', // Setează culoarea liniilor de grid pentru axa Y
-          lineWidth: 1, // Grosimea liniilor
+          color: 'rgb(31, 139, 27)',
+          lineWidth: 1,
         },
       },
     },
   };
-  
 
   return (
     <div style={{ width: '80%', height: '40%', margin: '0 auto', border: '1px solid #ddd', backgroundColor: 'currentcolor', borderRadius: '15px' }}> 
